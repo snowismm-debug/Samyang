@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samyang Corp. — Not That Samyang 😄</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', 'Segoe UI', sans-serif;
+    background: #F9F8F7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 48px;
+    color: #2C2C2B;
+  }
+
+  /* Language tabs */
+  .lang-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: #F0EFED;
+    border-radius: 12px;
+    padding: 4px;
+  }
+  .lang-btn {
+    border: none;
+    background: transparent;
+    padding: 8px 20px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #7D7A75;
+    transition: all .18s;
+  }
+  .lang-btn.active {
+    background: #fff;
+    color: #2C2C2B;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+  }
+
+  /* Card */
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 100%;
+    padding: 28px 24px 32px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.06);
+  }
+
+  /* Hero deny */
+  .deny-box {
+    background: #FCE9E7;
+    border-radius: 14px;
+    padding: 18px 18px 14px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  .deny-emoji { font-size: 36px; display: block; margin-bottom: 6px; }
+  .deny-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #C0392B;
+    line-height: 1.3;
+  }
+  .deny-sub {
+    font-size: 13px;
+    color: #7D7A75;
+    margin-top: 6px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: #E6E5E3;
+    margin: 20px 0;
+  }
+
+  /* Identity block */
+  .identity {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .identity .co-name {
+    font-size: 22px;
+    font-weight: 900;
+    color: #2C2C2B;
+    letter-spacing: -.3px;
+  }
+  .identity .co-sub {
+    font-size: 13px;
+    color: #7D7A75;
+    margin-top: 3px;
+  }
+  .badge-since {
+    display: inline-block;
+    background: #E5F2FC;
+    color: #2783DE;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-top: 10px;
+    letter-spacing: .3px;
+  }
+
+  /* Highlight product */
+  .product-box {
+    background: #E8F1EC;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .product-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+  .product-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #46A171;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    margin-bottom: 3px;
+  }
+  .product-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #2C2C2B;
+    line-height: 1.3;
+  }
+  .product-sub {
+    font-size: 12px;
+    color: #7D7A75;
+    margin-top: 2px;
+  }
+
+  /* Business pillars */
+  .pillars { display: flex; flex-direction: column; gap: 10px; }
+  .pillar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #F9F8F7;
+    border-radius: 10px;
+    padding: 11px 14px;
+  }
+  .pillar-icon { font-size: 20px; flex-shrink: 0; }
+  .pillar-text { font-size: 13px; color: #2C2C2B; line-height: 1.4; font-weight: 500; }
+
+  /* Footer note */
+  .footer-note {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 12px;
+    color: #7D7A75;
+    line-height: 1.6;
+  }
+
+  /* Hidden panels */
+  .lang-panel { display: none; }
+  .lang-panel.active { display: block; }
+</style>
+</head>
+<body>
+
+<div class="lang-tabs">
+  <button class="lang-btn active" onclick="switchLang('ko', this)">한국어</button>
+  <button class="lang-btn" onclick="switchLang('en', this)">English</button>
+  <button class="lang-btn" onclick="switchLang('ja', this)">日本語</button>
+</div>
+
+<div class="card">
+
+  <!-- KOREAN -->
+  <div id="panel-ko" class="lang-panel active">
+    <div class="deny-box">
+      <span class="deny-emoji">🙅</span>
+      <div class="deny-title">저희는 '불닭볶음면' 회사가 아닙니다!</div>
+      <div class="deny-sub">저희도 불닭은 진심으로 좋아합니다만,<br>라면을 만들어본 적은 없답니다 😉</div>
+    </div>
+
+    <div class="identity">
+      <div class="co-name">삼양사 Samyang Corp.</div>
+      <div class="co-sub">삼양식품과는 전혀 다른 회사입니다</div>
+      <span class="badge-since">🗓 Since 1924 · 올해 창립 102주년</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="product-box">
+      <div class="product-icon">🍶</div>
+      <div>
+        <div class="product-label">대표 소비자 브랜드</div>
+        <div class="product-name">상쾌환 (Easy Tomorrow)</div>
+        <div class="product-sub">대한민국 숙취해소제 <strong>#1</strong> — 내일도 파이팅 💪</div>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar"><span class="pillar-icon">🌱</span><span class="pillar-text">B2B 식품 소재 · 알룰로스 등 기능성 감미료</span></div>
+      <div class="pillar"><span class="pillar-icon">⚗️</span><span class="pillar-text">친환경 · 배터리용 고기능 화학 소재</span></div>
+      <div class="pillar"><span class="pillar-icon">💊</span><span class="pillar-text">의약 · 바이오 사업</span></div>
+      <div class="pillar"><span class="pillar-icon">🏷</span><span class="pillar-text">소비재 브랜드 · 큐원 (Q1)</span></div>
+    </div>
+
+    <div class="footer-note">100년 기업이 조용히 잘 살고 있었는데<br>불닭이 너무 유명해져서 😂</div>
+  </div>
+
+  <!-- ENGLISH -->
+  <div id="panel-en" class="lang-panel">
+    <div class="deny-box">
+      <span class="deny-emoji">🙅</span>
+      <div class="deny-title">No, we do NOT make Buldak Noodles!</div>
+      <div class="deny-sub">We love Buldak just as much as you do —<br>we just never got into instant noodles 😉</div>
+    </div>
+
+    <div class="identity">
+      <div class="co-name">Samyang Corp.</div>
+      <div class="co-sub">A completely different company from Samyang Foods</div>
+      <span class="badge-since">🗓 Est. 1924 · Celebrating 102 Years</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="product-box">
+      <div class="product-icon">🍶</div>
+      <div>
+        <div class="product-label">Our Flagship Consumer Brand</div>
+        <div class="product-name">Easy Tomorrow (상쾌환)</div>
+        <div class="product-sub">Korea's <strong>#1</strong> Anti-Hangover Brand — because tomorrow matters 💪</div>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar"><span class="pillar-icon">🌱</span><span class="pillar-text">B2B Food Ingredients · Allulose & Functional Sweeteners</span></div>
+      <div class="pillar"><span class="pillar-icon">⚗️</span><span class="pillar-text">Eco-Friendly & Battery Specialty Chemicals</span></div>
+      <div class="pillar"><span class="pillar-icon">💊</span><span class="pillar-text">Pharma & Bio</span></div>
+      <div class="pillar"><span class="pillar-icon">🏷</span><span class="pillar-text">Consumer Brands · Q1 (큐원)</span></div>
+    </div>
+
+    <div class="footer-note">A century-old company minding its own business —<br>until Buldak went global 😂</div>
+  </div>
+
+  <!-- JAPANESE -->
+  <div id="panel-ja" class="lang-panel">
+    <div class="deny-box">
+      <span class="deny-emoji">🙅</span>
+      <div class="deny-title">弊社は「ブルダック炒め麺」の会社ではありません！</div>
+      <div class="deny-sub">ブルダックは大好物ですが、<br>ラーメンを作ったことは一度もありません 😉</div>
+    </div>
+
+    <div class="identity">
+      <div class="co-name">三養社 Samyang Corp.</div>
+      <div class="co-sub">三養食品とは全く別の会社です</div>
+      <span class="badge-since">🗓 1924年創業 · 今年で創立102周年</span>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="product-box">
+      <div class="product-icon">🍶</div>
+      <div>
+        <div class="product-label">代表コンシューマーブランド</div>
+        <div class="product-name">상쾌환 / Easy Tomorrow</div>
+        <div class="product-sub">韓国 <strong>#1</strong> 二日酔い解消薬 — 明日も元気に 💪</div>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar"><span class="pillar-icon">🌱</span><span class="pillar-text">B2B 食品素材 · アルロースなど機能性甘味料</span></div>
+      <div class="pillar"><span class="pillar-icon">⚗️</span><span class="pillar-text">環境配慮型・バッテリー向け高機能化学素材</span></div>
+      <div class="pillar"><span class="pillar-icon">💊</span><span class="pillar-text">医薬品・バイオ事業</span></div>
+      <div class="pillar"><span class="pillar-icon">🏷</span><span class="pillar-text">消費者ブランド · Qone（큐원）</span></div>
+    </div>
+
+    <div class="footer-note">100年間、静かに事業を続けていたのに<br>ブルダックが世界進出してしまいました 😂</div>
+  </div>
+
+</div>
+
+<script>
+function switchLang(lang, btn) {
+  document.querySelectorAll('.lang-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + lang).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
