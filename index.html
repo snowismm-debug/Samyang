@@ -2,297 +2,228 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Samyang Corp. — Not That Samyang 😄</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Samyang Corporation · 삼양사 · 三養社</title>
+<meta name="description" content="Samyang Corporation (삼양사) is not Samyang Foods, the maker of Buldak noodles.">
 <style>
+  :root {
+    --navy: #27267B;
+    --ink: #2E2F45;
+    --muted: #747790;
+    --line: #DCDDE8;
+    --tint: #ECECF6;
+    --bg: #F6F6F9;
+    --white: #FFFFFF;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans KR', 'Segoe UI', sans-serif;
-    background: #F9F8F7;
+    font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Hiragino Sans', 'Yu Gothic', 'Malgun Gothic', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px 16px 48px;
-    color: #2C2C2B;
+    line-height: 1.55;
+    padding: max(28px, env(safe-area-inset-top)) 20px max(40px, env(safe-area-inset-bottom));
   }
+  main { max-width: 400px; margin: 0 auto; }
 
-  /* Language tabs */
-  .lang-tabs {
+  /* Language switch */
+  .tabs {
     display: flex;
-    gap: 8px;
-    margin-bottom: 24px;
-    background: #F0EFED;
-    border-radius: 12px;
-    padding: 4px;
+    background: var(--tint);
+    border-radius: 10px;
+    padding: 3px;
+    margin-bottom: 40px;
   }
-  .lang-btn {
-    border: none;
+  .tab {
+    flex: 1;
+    border: 0;
     background: transparent;
-    padding: 8px 20px;
-    border-radius: 9px;
+    padding: 9px 0;
+    border-radius: 8px;
+    font: inherit;
     font-size: 14px;
     font-weight: 600;
+    color: var(--muted);
     cursor: pointer;
-    color: #7D7A75;
-    transition: all .18s;
   }
-  .lang-btn.active {
-    background: #fff;
-    color: #2C2C2B;
-    box-shadow: 0 1px 3px rgba(0,0,0,.1);
-  }
+  .tab[aria-selected="true"] { background: var(--navy); color: var(--white); }
+  .tab:focus-visible { outline: 2px solid var(--navy); outline-offset: 2px; }
 
-  /* Card */
-  .card {
-    background: #fff;
-    border-radius: 20px;
-    max-width: 420px;
-    width: 100%;
-    padding: 28px 24px 32px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.05), 0 4px 16px rgba(0,0,0,.06);
-  }
+  /* Logo */
+  .logo { display: block; width: 168px; height: auto; color: var(--navy); margin-bottom: 36px; }
 
-  /* Hero deny */
-  .deny-box {
-    background: #FCE9E7;
-    border-radius: 14px;
-    padding: 18px 18px 14px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  .deny-emoji { font-size: 36px; display: block; margin-bottom: 6px; }
-  .deny-title {
-    font-size: 18px;
-    font-weight: 800;
-    color: #C0392B;
+  /* Headline */
+  h1 {
+    font-size: 26px;
     line-height: 1.3;
-  }
-  .deny-sub {
-    font-size: 13px;
-    color: #7D7A75;
-    margin-top: 6px;
-    font-style: italic;
-    line-height: 1.5;
-  }
-
-  /* Divider */
-  .divider {
-    height: 1px;
-    background: #E6E5E3;
-    margin: 20px 0;
-  }
-
-  /* Identity block */
-  .identity {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  .identity .co-name {
-    font-size: 22px;
-    font-weight: 900;
-    color: #2C2C2B;
-    letter-spacing: -.3px;
-  }
-  .identity .co-sub {
-    font-size: 13px;
-    color: #7D7A75;
-    margin-top: 3px;
-  }
-  .badge-since {
-    display: inline-block;
-    background: #E5F2FC;
-    color: #2783DE;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-top: 10px;
-    letter-spacing: .3px;
-  }
-
-  /* Highlight product */
-  .product-box {
-    background: #E8F1EC;
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  .product-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
-  .product-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: #46A171;
-    text-transform: uppercase;
-    letter-spacing: .6px;
-    margin-bottom: 3px;
-  }
-  .product-name {
-    font-size: 16px;
     font-weight: 800;
-    color: #2C2C2B;
-    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin-bottom: 10px;
   }
-  .product-sub {
-    font-size: 12px;
-    color: #7D7A75;
-    margin-top: 2px;
-  }
+  .lead { font-size: 15px; color: var(--ink); }
+  .lead small { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); }
 
-  /* Business pillars */
-  .pillars { display: flex; flex-direction: column; gap: 10px; }
-  .pillar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #F9F8F7;
+  /* Comparison */
+  .compare { margin-top: 32px; border-top: 1px solid var(--line); }
+  .row { padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .row.us { background: linear-gradient(90deg, var(--tint), transparent); border-left: 3px solid var(--navy); padding-left: 14px; margin-left: -17px; }
+  .row-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .row-name { font-size: 16px; font-weight: 700; }
+  .row.us .row-name { color: var(--navy); }
+  .row-year { font-size: 13px; color: var(--muted); white-space: nowrap; }
+  .row-body { font-size: 14px; color: var(--ink); margin-top: 3px; }
+
+  /* Consumer brands */
+  .brands { margin-top: 28px; }
+  .brands h2 { font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 10px; }
+  .brand { display: flex; gap: 12px; align-items: baseline; padding: 10px 0; }
+  .brand + .brand { border-top: 1px solid var(--line); }
+  .brand-name { font-size: 16px; font-weight: 700; color: var(--navy); min-width: 148px; }
+  .brand-desc { font-size: 14px; color: var(--ink); }
+
+  .punch {
+    margin-top: 14px;
+    background: var(--tint);
     border-radius: 10px;
-    padding: 11px 14px;
-  }
-  .pillar-icon { font-size: 20px; flex-shrink: 0; }
-  .pillar-text { font-size: 13px; color: #2C2C2B; line-height: 1.4; font-weight: 500; }
-
-  /* Footer note */
-  .footer-note {
-    text-align: center;
-    margin-top: 22px;
-    font-size: 12px;
-    color: #7D7A75;
-    line-height: 1.6;
+    padding: 16px 18px;
+    font-size: 17px;
+    line-height: 1.45;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--navy);
   }
 
-  /* Hidden panels */
-  .lang-panel { display: none; }
-  .lang-panel.active { display: block; }
+  [hidden] { display: none !important; }
+  @media (max-width: 360px) {
+    .brand { flex-direction: column; gap: 0; }
+    .brand-name { min-width: 0; }
+  }
 </style>
 </head>
 <body>
+<main>
 
-<div class="lang-tabs">
-  <button class="lang-btn active" onclick="switchLang('ko', this)">한국어</button>
-  <button class="lang-btn" onclick="switchLang('en', this)">English</button>
-  <button class="lang-btn" onclick="switchLang('ja', this)">日本語</button>
-</div>
+  <div class="tabs" role="tablist" aria-label="Language">
+    <button class="tab" role="tab" id="tab-ko" aria-controls="panel-ko" aria-selected="true" data-lang="ko">한국어</button>
+    <button class="tab" role="tab" id="tab-en" aria-controls="panel-en" aria-selected="false" data-lang="en">English</button>
+    <button class="tab" role="tab" id="tab-ja" aria-controls="panel-ja" aria-selected="false" data-lang="ja">日本語</button>
+  </div>
 
-<div class="card">
+  <!-- Samyang logotype (inline SVG, no external file) -->
+  <svg class="logo" viewBox="236 244 2100 304" role="img" aria-label="SAMYANG" fill="currentColor" fill-rule="evenodd">
+    <title>SAMYANG</title>
+    <!-- S -->
+    <path d="M475 276 L456 320 C415 301 388 298 358 298 C320 298 295 306 295 322 C295 360 483 330 483 420 C483 470 435 497 360 497 C312 497 275 487 240 468 L259 424 C292 440 325 447 360 447 C405 447 427 437 427 421 C427 380 242 410 242 324 C242 275 285 248 358 248 C405 248 440 258 475 276 Z"/>
+    <!-- A -->
+    <path d="M607 259 H706 L791 453 V491 H737 V471 L731 454 H582 L576 471 V491 H522 V453 Z M642 308 L602 406 H711 L670 308 Z"/>
+    <!-- M -->
+    <path d="M849 259 H933 L994 374 L1056 259 H1140 V491 H1085 V313 L1018 435 H971 L904 313 V491 H849 Z"/>
+    <!-- Y -->
+    <path d="M1187 259 H1248 L1303 387 H1339 L1394 259 H1454 L1330 543 H1269 L1316 437 H1265 Z"/>
+    <!-- A -->
+    <path d="M1536 259 H1635 L1720 453 V491 H1666 V471 L1660 454 H1511 L1505 471 V491 H1451 V453 Z M1571 308 L1531 406 H1640 L1599 308 Z"/>
+    <!-- N -->
+    <path d="M1778 259 H1833 L1964 410 V259 H2018 V491 H1963 L1833 340 V491 H1778 Z"/>
+    <!-- G -->
+    <path d="M2323 279 L2304 326 C2270 312 2237 304 2210 304 C2165 304 2130 328 2130 375 C2130 420 2165 447 2212 447 C2243 447 2265 442 2278 436 V406 H2214 V360 H2332 V469 C2305 486 2255 497 2212 497 C2125 497 2075 445 2075 375 C2075 305 2125 253 2212 253 C2250 253 2290 264 2323 279 Z"/>
+  </svg>
 
   <!-- KOREAN -->
-  <div id="panel-ko" class="lang-panel active">
-    <div class="deny-box">
-      <span class="deny-emoji">🙅</span>
-      <div class="deny-title">저희는 '불닭볶음면' 회사가 아닙니다!</div>
-      <div class="deny-sub">저희도 불닭은 진심으로 좋아합니다만,<br>라면을 만들어본 적은 없답니다 😉</div>
-    </div>
+  <section id="panel-ko" role="tabpanel" aria-labelledby="tab-ko" lang="ko">
+    <h1>저희는 불닭볶음면을<br>만들지 않습니다.</h1>
+    <p class="lead">삼양식품과는 다른 회사예요.
+      <small>저희도 불닭은 좋아합니다 🔥</small></p>
 
-    <div class="identity">
-      <div class="co-name">삼양사 Samyang Corp.</div>
-      <div class="co-sub">삼양식품과는 전혀 다른 회사입니다</div>
-      <span class="badge-since">🗓 Since 1924 · 올해 창립 102주년</span>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="product-box">
-      <div class="product-icon">🍶</div>
-      <div>
-        <div class="product-label">대표 소비자 브랜드</div>
-        <div class="product-name">상쾌환 (Easy Tomorrow)</div>
-        <div class="product-sub">대한민국 숙취해소제 <strong>#1</strong> — 내일도 파이팅 💪</div>
+    <div class="compare">
+      <div class="row us">
+        <div class="row-head"><span class="row-name">삼양사 Samyang Corporation</span><span class="row-year">1924년 창립</span></div>
+        <p class="row-body">B2B 기반 소재 기업<br>식품 소재 · 스페셜티 화학 소재 · 의약바이오</p>
       </div>
     </div>
 
-    <div class="pillars">
-      <div class="pillar"><span class="pillar-icon">🌱</span><span class="pillar-text">B2B 식품 소재 · 알룰로스 등 기능성 감미료</span></div>
-      <div class="pillar"><span class="pillar-icon">⚗️</span><span class="pillar-text">친환경 · 배터리용 고기능 화학 소재</span></div>
-      <div class="pillar"><span class="pillar-icon">💊</span><span class="pillar-text">의약 · 바이오 사업</span></div>
-      <div class="pillar"><span class="pillar-icon">🏷</span><span class="pillar-text">소비재 브랜드 · 큐원 (Q1)</span></div>
+    <div class="brands">
+      <h2>소비자 브랜드</h2>
+      <div class="brand"><span class="brand-name">큐원 Q.one</span><span class="brand-desc">식품 브랜드</span></div>
+      <div class="brand"><span class="brand-name">상쾌환 EASY TOMORROW</span><span class="brand-desc">숙취해소 브랜드</span></div>
+      <p class="punch">라면은 못 끓여도,<br>다음 날 아침은 상쾌환이 책임집니다.</p>
     </div>
-
-    <div class="footer-note">100년 기업이 조용히 잘 살고 있었는데<br>불닭이 너무 유명해져서 😂</div>
-  </div>
+  </section>
 
   <!-- ENGLISH -->
-  <div id="panel-en" class="lang-panel">
-    <div class="deny-box">
-      <span class="deny-emoji">🙅</span>
-      <div class="deny-title">No, we do NOT make Buldak Noodles!</div>
-      <div class="deny-sub">We love Buldak just as much as you do —<br>we just never got into instant noodles 😉</div>
-    </div>
+  <section id="panel-en" role="tabpanel" aria-labelledby="tab-en" lang="en" hidden>
+    <h1>We don’t make<br>Buldak noodles.</h1>
+    <p class="lead">Samyang Corporation is a different company from Samyang Foods.
+      <small>We like Buldak too 🔥</small></p>
 
-    <div class="identity">
-      <div class="co-name">Samyang Corp.</div>
-      <div class="co-sub">A completely different company from Samyang Foods</div>
-      <span class="badge-since">🗓 Est. 1924 · Celebrating 102 Years</span>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="product-box">
-      <div class="product-icon">🍶</div>
-      <div>
-        <div class="product-label">Our Flagship Consumer Brand</div>
-        <div class="product-name">Easy Tomorrow (상쾌환)</div>
-        <div class="product-sub">Korea's <strong>#1</strong> Anti-Hangover Brand — because tomorrow matters 💪</div>
+    <div class="compare">
+      <div class="row us">
+        <div class="row-head"><span class="row-name">Samyang Corporation</span><span class="row-year">Founded 1924</span></div>
+        <p class="row-body">A B2B materials company<br>Food ingredients · Specialty chemicals · Pharma &amp; bio</p>
       </div>
     </div>
 
-    <div class="pillars">
-      <div class="pillar"><span class="pillar-icon">🌱</span><span class="pillar-text">B2B Food Ingredients · Allulose & Functional Sweeteners</span></div>
-      <div class="pillar"><span class="pillar-icon">⚗️</span><span class="pillar-text">Eco-Friendly & Battery Specialty Chemicals</span></div>
-      <div class="pillar"><span class="pillar-icon">💊</span><span class="pillar-text">Pharma & Bio</span></div>
-      <div class="pillar"><span class="pillar-icon">🏷</span><span class="pillar-text">Consumer Brands · Q1 (큐원)</span></div>
+    <div class="brands">
+      <h2>Consumer brands</h2>
+      <div class="brand"><span class="brand-name">Q.one (큐원)</span><span class="brand-desc">Food brand</span></div>
+      <div class="brand"><span class="brand-name">EASY TOMORROW (상쾌환)</span><span class="brand-desc">Hangover relief</span></div>
+      <p class="punch">We can’t cook your ramen,<br>but EASY TOMORROW has your morning covered.</p>
     </div>
-
-    <div class="footer-note">A century-old company minding its own business —<br>until Buldak went global 😂</div>
-  </div>
+  </section>
 
   <!-- JAPANESE -->
-  <div id="panel-ja" class="lang-panel">
-    <div class="deny-box">
-      <span class="deny-emoji">🙅</span>
-      <div class="deny-title">弊社は「ブルダック炒め麺」の会社ではありません！</div>
-      <div class="deny-sub">ブルダックは大好物ですが、<br>ラーメンを作ったことは一度もありません 😉</div>
-    </div>
+  <section id="panel-ja" role="tabpanel" aria-labelledby="tab-ja" lang="ja" hidden>
+    <h1>「ブルダック炒め麺」は<br>作っていません。</h1>
+    <p class="lead">三養食品とは別の会社です。
+      <small>ブルダックは私たちも好きです 🔥</small></p>
 
-    <div class="identity">
-      <div class="co-name">三養社 Samyang Corp.</div>
-      <div class="co-sub">三養食品とは全く別の会社です</div>
-      <span class="badge-since">🗓 1924年創業 · 今年で創立102周年</span>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="product-box">
-      <div class="product-icon">🍶</div>
-      <div>
-        <div class="product-label">代表コンシューマーブランド</div>
-        <div class="product-name">상쾌환 / Easy Tomorrow</div>
-        <div class="product-sub">韓国 <strong>#1</strong> 二日酔い解消薬 — 明日も元気に 💪</div>
+    <div class="compare">
+      <div class="row us">
+        <div class="row-head"><span class="row-name">三養社 Samyang Corporation</span><span class="row-year">1924年創業</span></div>
+        <p class="row-body">B2Bを基盤とする素材企業<br>食品素材 · スペシャリティ化学素材 · 医薬バイオ</p>
       </div>
     </div>
 
-    <div class="pillars">
-      <div class="pillar"><span class="pillar-icon">🌱</span><span class="pillar-text">B2B 食品素材 · アルロースなど機能性甘味料</span></div>
-      <div class="pillar"><span class="pillar-icon">⚗️</span><span class="pillar-text">環境配慮型・バッテリー向け高機能化学素材</span></div>
-      <div class="pillar"><span class="pillar-icon">💊</span><span class="pillar-text">医薬品・バイオ事業</span></div>
-      <div class="pillar"><span class="pillar-icon">🏷</span><span class="pillar-text">消費者ブランド · Qone（큐원）</span></div>
+    <div class="brands">
+      <h2>消費者ブランド</h2>
+      <div class="brand"><span class="brand-name">Q.one（큐원）</span><span class="brand-desc">食品ブランド</span></div>
+      <div class="brand"><span class="brand-name">EASY TOMORROW（상쾌환）</span><span class="brand-desc">二日酔い対策ブランド</span></div>
+      <p class="punch">ラーメンは作れませんが、<br>翌朝はEASY TOMORROWにお任せください。</p>
     </div>
+  </section>
 
-    <div class="footer-note">100年間、静かに事業を続けていたのに<br>ブルダックが世界進出してしまいました 😂</div>
-  </div>
-
-</div>
+</main>
 
 <script>
-function switchLang(lang, btn) {
-  document.querySelectorAll('.lang-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + lang).classList.add('active');
-  btn.classList.add('active');
-}
+(function () {
+  var tabs = document.querySelectorAll('.tab');
+  var langs = ['ko', 'en', 'ja'];
+
+  function show(lang) {
+    langs.forEach(function (l) {
+      document.getElementById('panel-' + l).hidden = (l !== lang);
+      var t = document.getElementById('tab-' + l);
+      t.setAttribute('aria-selected', l === lang ? 'true' : 'false');
+      t.tabIndex = (l === lang) ? 0 : -1;
+    });
+    document.documentElement.lang = lang;
+  }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { show(t.dataset.lang); });
+    t.addEventListener('keydown', function (e) {
+      var n = null;
+      if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+      if (e.key === 'ArrowLeft') n = (i + tabs.length - 1) % tabs.length;
+      if (n !== null) { tabs[n].focus(); show(tabs[n].dataset.lang); }
+    });
+  });
+
+  // Open in the visitor's browser language (ko / ja / en), default Korean
+  var nav = (navigator.language || 'ko').slice(0, 2).toLowerCase();
+  show(langs.indexOf(nav) > -1 ? nav : (nav === 'ko' ? 'ko' : 'en'));
+})();
 </script>
 </body>
 </html>
